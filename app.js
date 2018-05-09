@@ -1,5 +1,11 @@
 const { BotFrameworkAdapter, MemoryStorage, ConversationState } = require('botbuilder');
+const { TableStorage } = require('botbuilder-azure');
 const restify = require('restify');
+
+const development = (process.env.NODE_ENV === 'development');
+if (development) {
+  require('dotenv').config();
+}
 
 // Create server
 const server = restify.createServer();
@@ -14,8 +20,19 @@ const adapter = new BotFrameworkAdapter({
 });
 
 // Add conversation state middleware
-const conversationState = new ConversationState(new MemoryStorage());
-adapter.use(conversationState);
+let conversationState = null;
+if (development) {
+  conversationState = new ConversationState(new MemoryStorage());
+  adapter.use(conversationState);
+} else {
+  const tableName = 'botdata';
+  const azureStorage = new TableStorage({
+    tableName,
+    storageAccountOrConnectionString: process.env.AzureWebJobsStorage
+  });
+  conversationState = new ConversationState(azureStorage);
+  adapter.use(conversationState);
+}
 
 // Listen for incoming requests
 server.post('/api/messages', (req, res) => {
