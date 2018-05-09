@@ -1,0 +1,12 @@
+{
+  "extends": ["eslint:recommended", "plugin:node/recommended"],
+  "plugins": ["node"],
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "node/exports-style": "error",
+    "no-console": "off"
+  }
+}

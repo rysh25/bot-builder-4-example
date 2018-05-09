@@ -1,0 +1,22 @@
+{
+  "name": "bot-service-4-example",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "botbuilder": "^4.0.0-preview1.1",
+    "dotenv": "^2.0.0",
+    "restify": "^4.3.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "devDependencies": {
+    "@types/node": "^6.0.52",
+    "@types/restify": "^2.0.35",
+    "eslint": "^4.19.1",
+    "eslint-plugin-node": "^6.0.1"
+  }
+}
