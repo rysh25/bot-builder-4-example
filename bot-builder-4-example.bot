@@ -1,5 +1,5 @@
 {
-  "name": "bot-service-4-example",
+  "name": "bot-builder-4-example",
   "secretKey": "",
   "services": [
     {
@@ -8,7 +8,7 @@
       "type": "endpoint",
       "appPassword": "",
       "endpoint": "http://localhost:3978/api/messages",
-      "name": "bot-service-4-example"
+      "name": "bot-builder-4-example"
     }
   ]
 }
